@@ -1,0 +1,276 @@
+
+/* Moderniza o visual da lista de clientes */
+.clientes-lista-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.clientes-titulo {
+  color: var(--color-primary);
+  margin-bottom: 24px;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.clientes-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.clientes-filtros {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.clientes-filtro-input {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: white;
+  transition: all 0.2s ease;
+  min-width: 300px;
+}
+
+.clientes-filtro-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.clientes-filtro-select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 150px;
+}
+
+.clientes-filtro-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.clientes-import-export {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-export,
+.btn-import {
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-export:hover,
+.btn-import:hover {
+  background: var(--color-dark);
+}
+
+.clientes-adicionar-btn {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: background 0.2s, color 0.2s;
+}
+.clientes-adicionar-btn:hover {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+}
+
+.clientes-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.clientes-vazio {
+  color: var(--color-dark);
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 24px;
+}
+
+.clientes-card {
+  background: var(--color-white);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px var(--shadow);
+  padding: 18px 24px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border-left: 6px solid var(--color-primary);
+  position: relative;
+}
+.clientes-card:hover {
+  box-shadow: 0 4px 18px var(--color-primary);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.clientes-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.clientes-nome {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  letter-spacing: 0.5px;
+}
+
+.clientes-dados {
+  font-size: 1rem;
+  color: var(--color-accent);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aniversario-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.aniversario-data {
+  margin-left: 2px;
+  font-weight: 600;
+}
+
+.dias-restantes {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-left: 6px;
+  opacity: 0.8;
+}
+
+.dias-restantes.destaque {
+  font-weight: 600;
+  opacity: 1;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.clientes-card-top {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.clientes-card-actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* Responsividade para filtros */
+@media (max-width: 768px) {
+  .clientes-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .clientes-filtros {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .clientes-filtro-input {
+    min-width: unset;
+    width: 100%;
+  }
+  
+  .clientes-filtro-select {
+    min-width: unset;
+    width: 100%;
+  }
+  
+  .clientes-import-export {
+    justify-content: center;
+  }
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+}
+.icon-btn:hover {
+  background: var(--color-light);
+}
+
+@media (max-width: 600px) {
+  .clientes-lista-container {
+    padding: 16px 0;
+  }
+  .clientes-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .clientes-import-export {
+    justify-content: center;
+  }
+  .clientes-card {
+    padding: 14px 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .clientes-card-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

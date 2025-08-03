@@ -1,0 +1,14 @@
+.header {
+  width: 100%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 24px 0 16px 0;
+  text-align: center;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.header-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
