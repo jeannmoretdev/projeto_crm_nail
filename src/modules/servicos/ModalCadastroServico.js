@@ -6,6 +6,7 @@ import Input from '../../components/Input';
 function ModalCadastroServico({ open, onAdd, onClose, editData }) {
   const [nome, setNome] = useState('');
   const [valor, setValor] = useState('');
+  const [custo, setCusto] = useState('');
 
   // Função para formatar valor monetário em tempo real
   const formatarValor = (value) => {
@@ -28,14 +29,22 @@ function ModalCadastroServico({ open, onAdd, onClose, editData }) {
     setValor(valorFormatado);
   };
 
+  const handleCustoChange = (e) => {
+    const custoFormatado = formatarValor(e.target.value);
+    setCusto(custoFormatado);
+  };
+
   // Carregar dados para edição
   useEffect(() => {
     if (editData) {
       setNome(editData.nome);
-      setValor(editData.valor);
+      // Converter valores numéricos para string formatada
+      setValor(editData.valor ? formatarValor((editData.valor * 100).toString()) : '');
+      setCusto(editData.custo ? formatarValor((editData.custo * 100).toString()) : '');
     } else {
       setNome('');
       setValor('');
+      setCusto('');
     }
   }, [editData, open]);
 
@@ -47,19 +56,23 @@ function ModalCadastroServico({ open, onAdd, onClose, editData }) {
       return;
     }
     
-    if (!valor.trim()) {
+    if (!valor || valor.trim() === '' || valor.trim() === 'R$ 0,00') {
       alert('Por favor, preencha o valor do serviço.');
       return;
     }
 
     const parseValor = (valorString) => {
-      const numero = parseFloat(valorString.replace(',', '.'));
+      if (!valorString) return 0;
+      // Remove R$, espaços e substitui vírgula por ponto
+      const numeroLimpo = valorString.replace(/[R$\s]/g, '').replace(',', '.');
+      const numero = parseFloat(numeroLimpo);
       return isNaN(numero) ? 0 : numero;
     };
 
     const novoServico = {
       nome: nome.trim(),
-      valor: parseValor(valor)
+      valor: parseValor(valor),
+      custo: parseValor(custo) || 0
     };
 
     onAdd(novoServico);
@@ -67,11 +80,13 @@ function ModalCadastroServico({ open, onAdd, onClose, editData }) {
     // Limpar formulário
     setNome('');
     setValor('');
+    setCusto('');
   };
 
   const handleClose = () => {
     setNome('');
     setValor('');
+    setCusto('');
     onClose();
   };
 
@@ -102,6 +117,20 @@ function ModalCadastroServico({ open, onAdd, onClose, editData }) {
               required
               inputMode="numeric"
             />
+          </div>
+          
+          <div className="form-group">
+            <Input
+              label="Custo"
+              type="text"
+              value={custo}
+              onChange={handleCustoChange}
+              placeholder="R$ 0,00"
+              inputMode="numeric"
+            />
+            <small style={{ color: '#666', fontSize: '12px', marginTop: '4px', display: 'block' }}>
+              Custo dos materiais/produtos utilizados (opcional)
+            </small>
           </div>
           
           <div className="form-actions">

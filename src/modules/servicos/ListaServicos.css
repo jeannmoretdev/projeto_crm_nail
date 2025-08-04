@@ -334,3 +334,96 @@
 .servico-card:nth-child(4) { animation-delay: 0.4s; }
 .servico-card:nth-child(5) { animation-delay: 0.5s; }
 .servico-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Estilos para informações financeiras dos serviços */
+.servico-financeiro {
+  margin-top: 1rem;
+}
+
+.servico-valores {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.valor-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.valor-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.valor-preco {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.valor-custo {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.valor-lucro {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.margem-lucro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid transparent;
+}
+
+.margem-label {
+  color: #666;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.margem-valor {
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.margem-valor.alta {
+  background: #d4edda;
+  color: #155724;
+  border-color: #27ae60;
+}
+
+.margem-valor.media {
+  background: #fff3cd;
+  color: #856404;
+  border-color: #f39c12;
+}
+
+.margem-valor.baixa {
+  background: #f8d7da;
+  color: #721c24;
+  border-color: #e74c3c;
+}
+
+.margem-lucro.alta {
+  border-left-color: #27ae60;
+}
+
+.margem-lucro.media {
+  border-left-color: #f39c12;
+}
+
+.margem-lucro.baixa {
+  border-left-color: #e74c3c;
+}

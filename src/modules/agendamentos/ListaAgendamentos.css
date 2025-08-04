@@ -361,7 +361,7 @@
   border-radius: 0 0 12px 12px;
   max-height: 200px;
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 1005; /* Abaixo dos modais mas acima do header */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 

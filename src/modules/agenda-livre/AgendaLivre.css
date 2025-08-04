@@ -1,0 +1,473 @@
+/* Container principal da agenda livre */
+.agenda-livre-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.agenda-livre-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.agenda-livre-header h2 {
+  color: var(--color-primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.agenda-livre-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Navegação do mês */
+.mes-navegacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.nav-btn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
+  background: #6a5acd;
+}
+
+.mes-titulo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+  min-width: 250px;
+  text-align: center;
+}
+
+/* Legenda */
+.legenda {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.legenda-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.legenda-item span:first-child {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: block;
+}
+
+.cor-livre {
+  background: linear-gradient(135deg, #28a745, #20c997);
+}
+
+.cor-poucos {
+  background: linear-gradient(135deg, #ffc107, #fd7e14);
+}
+
+.cor-ocupado {
+  background: linear-gradient(135deg, #dc3545, #e83e8c);
+}
+
+.cor-fim-semana {
+  background: #6c757d;
+}
+
+/* Container do calendário */
+.calendario-container {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+/* Cabeçalho dos dias da semana */
+.calendario-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  margin-bottom: 1rem;
+}
+
+.dia-semana {
+  text-align: center;
+  font-weight: 700;
+  color: var(--color-primary);
+  padding: 1rem 0.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Grid do calendário */
+.calendario-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+.calendario-dia {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+  border: 2px solid transparent;
+}
+
+.calendario-dia.clickable {
+  cursor: pointer;
+}
+
+.calendario-dia.clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.calendario-dia.selected {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.dia-numero {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.horarios-count {
+  font-size: 0.7rem;
+  color: #666;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+/* Estados dos dias */
+.calendario-dia.livre {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  color: #155724;
+}
+
+.calendario-dia.livre .horarios-count {
+  color: #155724;
+}
+
+.calendario-dia.poucos {
+  background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+  color: #856404;
+}
+
+.calendario-dia.poucos .horarios-count {
+  color: #856404;
+}
+
+.calendario-dia.ocupado {
+  background: linear-gradient(135deg, #f8d7da, #f5b7b1);
+  color: #721c24;
+}
+
+.calendario-dia.ocupado .horarios-count {
+  color: #721c24;
+}
+
+.calendario-dia.fim-semana {
+  background: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.calendario-dia.passado {
+  background: #f8f9fa;
+  color: #adb5bd;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Detalhes do dia selecionado */
+.dia-detalhes {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid var(--color-primary);
+}
+
+.dia-detalhes h3 {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-transform: capitalize;
+}
+
+/* Agendamentos marcados */
+.agendamentos-marcados {
+  margin-bottom: 2rem;
+}
+
+.agendamentos-marcados h4 {
+  color: #dc3545;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.agendamentos-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.agendamento-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+  border: 1px solid #f5c6cb;
+  border-radius: 12px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.agendamento-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
+}
+
+.agendamento-hora {
+  background: #dc3545;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  min-width: 80px;
+  text-align: center;
+}
+
+.agendamento-info {
+  flex: 1;
+}
+
+.cliente-nome {
+  font-weight: 700;
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.servico-nome {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.horarios-disponiveis h4 {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.horarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.horario-item {
+  background: linear-gradient(135deg, var(--color-primary), #6a5acd);
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.horario-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
+}
+
+.copiar-btn {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  box-shadow: 0 4px 16px rgba(40, 167, 69, 0.3);
+}
+
+.copiar-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+  background: linear-gradient(135deg, #218838, #1e7e34);
+}
+
+.sem-horarios {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.sem-horarios p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.sem-horarios span {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .agenda-livre-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .agenda-livre-header h2 {
+    font-size: 2rem;
+  }
+  
+  .mes-navegacao {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .mes-titulo {
+    font-size: 1.4rem;
+    min-width: 200px;
+  }
+  
+  .legenda {
+    gap: 1rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0.5rem;
+  }
+  
+  .legenda-item {
+    white-space: nowrap;
+    font-size: 0.8rem;
+  }
+  
+  .calendario-container {
+    padding: 1rem;
+  }
+  
+  .dia-semana {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.8rem;
+  }
+  
+  .calendario-dia {
+    padding: 0.25rem;
+  }
+  
+  .dia-numero {
+    font-size: 1rem;
+  }
+  
+  .horarios-count {
+    font-size: 0.6rem;
+  }
+  
+  .horarios-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.5rem;
+  }
+  
+  .horario-item {
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .copiar-btn {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .dia-detalhes {
+    padding: 1.5rem;
+  }
+  
+  .agendamento-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .agendamento-hora {
+    align-self: flex-start;
+    min-width: auto;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .horarios-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .mes-titulo {
+    font-size: 1.2rem;
+    min-width: 150px;
+  }
+}

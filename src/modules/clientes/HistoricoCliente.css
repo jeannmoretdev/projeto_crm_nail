@@ -1,0 +1,270 @@
+/* Histórico do Cliente */
+.historico-cliente {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* Loading */
+.historico-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Estatísticas */
+.historico-estatisticas {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border-left: 4px solid var(--color-primary);
+}
+
+.historico-estatisticas h3 {
+  margin: 0 0 1rem 0;
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.estatisticas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.estatistica-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.estatistica-label {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.estatistica-valor {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.estatistica-valor.destaque {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+}
+
+.estatistica-valor.positivo {
+  color: #28a745;
+  font-size: 1.4rem;
+}
+
+/* Lista de Agendamentos */
+.historico-lista h3 {
+  margin: 0 0 1rem 0;
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.historico-vazio {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #ddd;
+}
+
+.agendamentos-historico {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.agendamento-historico-item {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.2s ease;
+}
+
+.agendamento-historico-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-primary);
+}
+
+.agendamento-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.agendamento-data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.data-valor {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: 0.95rem;
+}
+
+.hora-valor {
+  font-size: 0.85rem;
+  color: #666;
+  background: #f8f9fa;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.agendamento-detalhes {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.servico-nome {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.agendamento-valor {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.valor-cobrado {
+  font-weight: 700;
+  color: #28a745;
+  font-size: 1.1rem;
+}
+
+.agendamento-observacao {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e9ecef;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.agendamento-observacao strong {
+  color: var(--color-primary);
+}
+
+/* Scroll customizado */
+.historico-cliente::-webkit-scrollbar {
+  width: 6px;
+}
+
+.historico-cliente::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.historico-cliente::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+
+.historico-cliente::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .historico-cliente {
+    gap: 1.5rem;
+    max-height: none;
+  }
+  
+  .historico-estatisticas {
+    padding: 1rem;
+  }
+  
+  .estatisticas-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .estatistica-item {
+    padding: 0.75rem;
+  }
+  
+  .estatistica-valor {
+    font-size: 1.1rem;
+  }
+  
+  .estatistica-valor.destaque {
+    font-size: 1.3rem;
+  }
+  
+  .estatistica-valor.positivo {
+    font-size: 1.2rem;
+  }
+  
+  .agendamento-info {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .agendamento-data {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .data-valor {
+    font-size: 0.9rem;
+  }
+  
+  .hora-valor {
+    font-size: 0.8rem;
+  }
+  
+  .servico-nome {
+    font-size: 0.95rem;
+  }
+  
+  .valor-cobrado {
+    font-size: 1rem;
+  }
+}

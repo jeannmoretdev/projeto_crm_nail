@@ -1,6 +1,6 @@
 /* Estilos para o modal de detalhes do cliente */
 .detalhes-cliente-container {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -10,6 +10,52 @@
   font-weight: 600;
   font-size: 1.8rem;
   text-align: center;
+}
+
+/* Abas de Navegação */
+.detalhes-abas {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.aba-botao {
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.aba-botao:hover {
+  color: var(--color-primary);
+  background: rgba(212, 165, 116, 0.1);
+}
+
+.aba-botao.ativa {
+  color: var(--color-primary);
+  background: rgba(212, 165, 116, 0.15);
+}
+
+.aba-botao.ativa::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-primary);
+}
+
+/* Conteúdo das Abas */
+.aba-conteudo {
+  min-height: 300px;
 }
 
 .detalhes-info {
@@ -85,17 +131,97 @@
   min-width: 120px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .detalhes-cliente-container {
+    max-width: none;
     padding: 16px;
+  }
+  
+  .detalhes-titulo {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .detalhes-abas {
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .aba-botao {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .aba-conteudo {
+    min-height: 250px;
+  }
+  
+  .detalhes-info {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .detalhes-campo {
+    gap: 4px;
+  }
+  
+  .detalhes-label {
+    font-size: 0.85rem;
+  }
+  
+  .detalhes-valor {
+    font-size: 0.95rem;
   }
   
   .detalhes-actions {
     flex-direction: column;
+    gap: 8px;
   }
   
   .detalhes-actions button {
     width: 100%;
     min-width: auto;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .detalhes-cliente-container {
+    padding: 12px;
+  }
+  
+  .detalhes-titulo {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+  }
+  
+  .aba-botao {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .aba-conteudo {
+    min-height: 200px;
+  }
+  
+  .detalhes-info {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .detalhes-cliente-container {
+    padding: 12px;
+  }
+  
+  .detalhes-titulo {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+  }
+  
+  .detalhes-info {
+    gap: 12px;
+    margin-bottom: 20px;
   }
 }

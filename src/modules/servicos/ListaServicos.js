@@ -9,17 +9,18 @@ function ListaServicos() {
   const [servicos, setServicos] = useState(() => {
     const dadosSalvos = localStorage.getItem('servicos');
     const servicosSalvos = dadosSalvos ? JSON.parse(dadosSalvos) : [
-      { id: Date.now() + 1, nome: 'Aplicação Normal', valor: 50.00 },
-      { id: Date.now() + 2, nome: 'Aplicação Gel', valor: 70.00 },
-      { id: Date.now() + 3, nome: 'Manutenção Normal', valor: 35.00 },
-      { id: Date.now() + 4, nome: 'Manutenção Gel', valor: 45.00 }
+      { id: Date.now() + 1, nome: 'Aplicação Normal', valor: 50.00, custo: 15.00 },
+      { id: Date.now() + 2, nome: 'Aplicação Gel', valor: 70.00, custo: 20.00 },
+      { id: Date.now() + 3, nome: 'Manutenção Normal', valor: 35.00, custo: 10.00 },
+      { id: Date.now() + 4, nome: 'Manutenção Gel', valor: 45.00, custo: 12.00 }
     ];
     
     // Adicionar IDs aos serviços que não têm e converter valores em string para número
     return servicosSalvos.map(servico => ({
       ...servico,
       id: servico.id || Date.now() + Math.random(),
-      valor: typeof servico.valor === 'string' ? parseFloat(servico.valor.replace(/[^\d,]/g, '').replace(',', '.')) || 0 : servico.valor
+      valor: typeof servico.valor === 'string' ? parseFloat(servico.valor.replace(/[^\d,]/g, '').replace(',', '.')) || 0 : servico.valor,
+      custo: servico.custo !== undefined ? (typeof servico.custo === 'string' ? parseFloat(servico.custo.replace(/[^\d,]/g, '').replace(',', '.')) || 0 : servico.custo) : 0
     }));
   });
   const [showCadastro, setShowCadastro] = useState(false);
@@ -39,6 +40,21 @@ function ListaServicos() {
       currency: 'BRL'
     });
   }
+
+  // Função para calcular margem de lucro
+  const calcularMargemLucro = (valor, custo) => {
+    if (!valor || valor === 0) return 0;
+    const margem = ((valor - custo) / valor) * 100;
+    return Math.max(0, margem);
+  };
+
+  // Função para formatar moeda
+  const formatarMoeda = (valor) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(valor || 0);
+  };
 
   // Salvar serviços no localStorage
   useEffect(() => {
@@ -244,7 +260,34 @@ function ListaServicos() {
               
               <div className="servico-content">
                 <h3 className="servico-nome">{servico.nome}</h3>
-                <p className="servico-valor">{servico.valor}</p>
+                <div className="servico-financeiro">
+                  <div className="servico-valores">
+                    <div className="valor-item">
+                      <span className="valor-label">Valor:</span>
+                      <span className="valor-preco">{formatarMoeda(servico.valor)}</span>
+                    </div>
+                    {servico.custo > 0 && (
+                      <div className="valor-item">
+                        <span className="valor-label">Custo:</span>
+                        <span className="valor-custo">{formatarMoeda(servico.custo)}</span>
+                      </div>
+                    )}
+                    {servico.custo > 0 && (
+                      <div className="valor-item">
+                        <span className="valor-label">Lucro:</span>
+                        <span className="valor-lucro">{formatarMoeda(servico.valor - servico.custo)}</span>
+                      </div>
+                    )}
+                  </div>
+                  {servico.custo > 0 && (
+                    <div className="margem-lucro">
+                      <span className="margem-label">Margem:</span>
+                      <span className={`margem-valor ${calcularMargemLucro(servico.valor, servico.custo) >= 50 ? 'alta' : calcularMargemLucro(servico.valor, servico.custo) >= 30 ? 'media' : 'baixa'}`}>
+                        {calcularMargemLucro(servico.valor, servico.custo).toFixed(1)}%
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           );

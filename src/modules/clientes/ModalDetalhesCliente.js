@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from '../../components/Modal';
 import Button from '../../components/Button';
 import IconBirthday from '../../components/IconBirthday';
+import HistoricoCliente from './HistoricoCliente';
 import './ModalDetalhesCliente.css';
 
-function ModalDetalhesCliente({ open, onClose, cliente }) {
+function ModalDetalhesCliente({ open, onClose, cliente, servicos = [] }) {
+  const [abaAtiva, setAbaAtiva] = useState('informacoes');
   // Função para formatar telefone: (xx) xxxxx-xxxx
   function formatTelefone(value) {
     const numbers = (value || '').replace(/\D/g, '');
@@ -68,48 +70,67 @@ function ModalDetalhesCliente({ open, onClose, cliente }) {
       <div className="detalhes-cliente-container">
         <h2 className="detalhes-titulo">Detalhes do Cliente</h2>
         
-        <div className="detalhes-info">
-          <div className="detalhes-campo">
-            <label className="detalhes-label">Nome:</label>
-            <span className="detalhes-valor">{cliente.nome}</span>
-          </div>
-          
-          <div className="detalhes-campo">
-            <label className="detalhes-label">Telefone:</label>
-            <span className="detalhes-valor">{formatTelefone(cliente.telefone) || 'Não informado'}</span>
-          </div>
-          
-          <div className="detalhes-campo">
-            <label className="detalhes-label">Aniversário:</label>
-            <span className="detalhes-valor aniversario-detalhes">
-              <IconBirthday size={18} />
-              <span 
-                style={{ color: getAniversarioStatus(cliente.aniversario).cor }}
-              >
-                {formatAniversario(cliente.aniversario) || 'Não informado'}
-              </span>
-              {getAniversarioStatus(cliente.aniversario).diasRestantes && (
-                <span 
-                  className={`dias-restantes-modal ${getAniversarioStatus(cliente.aniversario).destaque ? 'destaque' : ''}`}
-                  style={{ color: getAniversarioStatus(cliente.aniversario).cor }}
-                >
-                  {getAniversarioStatus(cliente.aniversario).diasRestantes}
-                </span>
-              )}
-            </span>
-          </div>
-          
-          <div className="detalhes-campo">
-            <label className="detalhes-label">Observações:</label>
-            <span className="detalhes-valor observacoes">{cliente.observacoes || 'Nenhuma observação cadastrada'}</span>
-          </div>
-
-          {/* Futuramente aqui virão os históricos de serviços */}
-          <div className="detalhes-campo">
-            <label className="detalhes-label">Histórico de Serviços:</label>
-            <span className="detalhes-valor observacoes">Em breve - histórico completo de serviços, preços e datas</span>
-          </div>
+        {/* Abas de Navegação */}
+        <div className="detalhes-abas">
+          <button 
+            className={`aba-botao ${abaAtiva === 'informacoes' ? 'ativa' : ''}`}
+            onClick={() => setAbaAtiva('informacoes')}
+          >
+            📋 Informações
+          </button>
+          <button 
+            className={`aba-botao ${abaAtiva === 'historico' ? 'ativa' : ''}`}
+            onClick={() => setAbaAtiva('historico')}
+          >
+            📊 Histórico
+          </button>
         </div>
+
+        {/* Conteúdo das Abas */}
+        {abaAtiva === 'informacoes' ? (
+          <div className="aba-conteudo">
+            <div className="detalhes-info">
+              <div className="detalhes-campo">
+                <label className="detalhes-label">Nome:</label>
+                <span className="detalhes-valor">{cliente.nome}</span>
+              </div>
+              
+              <div className="detalhes-campo">
+                <label className="detalhes-label">Telefone:</label>
+                <span className="detalhes-valor">{formatTelefone(cliente.telefone) || 'Não informado'}</span>
+              </div>
+              
+              <div className="detalhes-campo">
+                <label className="detalhes-label">Aniversário:</label>
+                <span className="detalhes-valor aniversario-detalhes">
+                  <IconBirthday size={18} />
+                  <span 
+                    style={{ color: getAniversarioStatus(cliente.aniversario).cor }}
+                  >
+                    {formatAniversario(cliente.aniversario) || 'Não informado'}
+                  </span>
+                  {getAniversarioStatus(cliente.aniversario).diasRestantes && (
+                    <span 
+                      className={`dias-restantes-modal ${getAniversarioStatus(cliente.aniversario).destaque ? 'destaque' : ''}`}
+                      style={{ color: getAniversarioStatus(cliente.aniversario).cor }}
+                    >
+                      {getAniversarioStatus(cliente.aniversario).diasRestantes}
+                    </span>
+                  )}
+                </span>
+              </div>
+              
+              <div className="detalhes-campo">
+                <label className="detalhes-label">Observações:</label>
+                <span className="detalhes-valor observacoes">{cliente.observacoes || 'Nenhuma observação cadastrada'}</span>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="aba-conteudo">
+            <HistoricoCliente cliente={cliente} servicos={servicos} />
+          </div>
+        )}
 
         <div className="detalhes-actions">
           <Button variant="primary" onClick={onClose}>

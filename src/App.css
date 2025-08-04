@@ -90,3 +90,60 @@ code {
     transform: rotate(360deg);
   }
 }
+
+/* Estilos responsivos para o conteúdo principal */
+.main-content {
+  transition: all 0.3s ease;
+}
+
+/* Melhorias globais para modais */
+.modal-content h2,
+.modal-content h3 {
+  line-height: 1.3;
+  word-wrap: break-word;
+}
+
+.modal-content form {
+  max-width: 100%;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Prevenir scroll do body quando modal estiver aberto */
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 20px !important;
+    padding-top: 90px !important; /* Espaço para o header mobile */
+    width: 100%;
+  }
+  
+  /* Ajustes globais para modais mobile */
+  .modal-content {
+    font-size: 14px;
+  }
+  
+  .modal-content h1 {
+    font-size: 1.5rem;
+  }
+  
+  .modal-content h2 {
+    font-size: 1.3rem;
+  }
+  
+  .modal-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  .modal-content button {
+    min-height: 44px; /* Melhor toque em mobile */
+  }
+}

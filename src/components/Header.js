@@ -1,11 +1,26 @@
 import React from 'react';
 import './Header.css';
 
-function Header() {
+function Header({ isMobile, isMobileMenuOpen, onToggleMenu }) {
+  if (!isMobile) return null;
+
   return (
-    <header className="header">
-      <h1 className="header-title">Camila Nails</h1>
-      {/* Espaço para notificações, avatar, etc. */}
+    <header className="mobile-header">
+      <div className="mobile-header-content">
+        <h1 className="mobile-brand">
+          <span className="mobile-brand-text">Camila Nails</span>
+        </h1>
+        
+        <button 
+          className={`mobile-menu-toggle ${isMobileMenuOpen ? 'open' : ''}`}
+          onClick={onToggleMenu}
+          aria-label="Menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </header>
   );
 }

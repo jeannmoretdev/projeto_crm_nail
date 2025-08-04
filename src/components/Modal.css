@@ -4,18 +4,66 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 1010; /* Maior que o header mobile (1002) */
+  padding: 20px;
+  overflow-y: auto;
 }
 
 .modal-content {
   background: var(--color-white);
   border-radius: 12px;
-  box-shadow: 0 2px 12px var(--shadow);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   padding: 32px;
   min-width: 320px;
   max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  margin: auto;
+}
+
+/* Botão de fechar modal */
+.modal-close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  transition: all 0.2s ease;
+  z-index: 1011; /* Garantir que o botão fechar fique visível */
+}
+
+.modal-close-button:hover {
+  background: rgba(0, 0, 0, 0.2);
+  color: #333;
+  transform: scale(1.1);
+}
+
+/* Responsividade mobile */
+@media (max-width: 768px) {
+  .modal-overlay {
+    align-items: flex-start;
+    padding: 80px 10px 10px 10px; /* Padding-top para não ficar atrás do header */
+  }
+  
+  .modal-content {
+    width: 100%;
+    max-width: none;
+    max-height: calc(100vh - 90px); /* Ajustar altura considerando o header */
+    padding: 20px;
+    margin-top: 0;
+    border-radius: 8px;
+  }
 }

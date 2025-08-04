@@ -6,6 +6,8 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-header {
@@ -13,6 +15,7 @@
   color: var(--color-white);
   padding: 2rem;
   text-align: center;
+  position: relative;
 }
 
 .modal-header h2 {
@@ -23,7 +26,7 @@
 
 .detalhes-content {
   padding: 2rem;
-  max-height: 60vh;
+  flex: 1;
   overflow-y: auto;
 }
 
@@ -174,12 +177,16 @@
 /* Responsividade */
 @media (max-width: 768px) {
   .modal-detalhes-agendamento {
-    max-width: 95vw;
-    margin: 1rem;
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+    margin: 0;
   }
   
   .modal-header {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
   }
   
   .modal-header h2 {
@@ -187,15 +194,24 @@
   }
   
   .detalhes-content {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
   }
   
   .detalhes-grid {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
   
   .detalhe-item {
     padding: 0.75rem;
+  }
+  
+  .detalhe-label {
+    font-size: 0.9rem;
+  }
+  
+  .detalhe-valor {
+    font-size: 1rem;
   }
   
   .valor-item {
@@ -206,7 +222,37 @@
   }
   
   .modal-footer {
-    padding: 1rem 1.5rem;
+    padding: 1rem;
+  }
+  
+  .btn-fechar {
+    width: 100%;
+    padding: 15px;
+  }
+}
+
+/* Para telas muito pequenas */
+@media (max-width: 480px) {
+  .modal-header {
+    padding: 1rem;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.25rem;
+  }
+  
+  .detalhes-content {
+    padding: 1rem;
+  }
+  
+  .detalhe-item {
+    padding: 0.5rem;
+  }
+  
+  .observacao-texto,
+  .historico-texto {
+    padding: 1rem;
+    font-size: 0.9rem;
   }
 }
 
