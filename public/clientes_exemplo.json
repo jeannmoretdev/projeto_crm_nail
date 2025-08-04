@@ -1,0 +1,66 @@
+{
+  "clientes": [
+    {
+      "nome": "Maria Silva Santos",
+      "telefone": "11987654321",
+      "aniversario": "1503",
+      "observacoes": "Prefere esmaltes em tons neutros. Alérgica a acetona."
+    },
+    {
+      "nome": "Ana Carolina Oliveira",
+      "telefone": "11912345678",
+      "aniversario": "2207",
+      "observacoes": "Gosta de nail art com glitter. Cliente VIP desde 2023."
+    },
+    {
+      "nome": "Juliana Costa",
+      "telefone": "11965432187",
+      "aniversario": "1011",
+      "observacoes": "Trabalha com as mãos, prefere cores escuras para disfarçar. Vem sempre às quartas."
+    },
+    {
+      "nome": "Fernanda Lima",
+      "telefone": "11923456789",
+      "aniversario": "0804",
+      "observacoes": "Unhas sempre curtas para tocar piano. Adora francesinha clássica."
+    },
+    {
+      "nome": "Camila Rodrigues",
+      "telefone": "11998765432",
+      "aniversario": "2512",
+      "observacoes": "Experimenta cores diferentes a cada sessão. Influencer digital."
+    },
+    {
+      "nome": "Patricia Almeida",
+      "telefone": "11934567891",
+      "aniversario": "1609",
+      "observacoes": "Cuida muito das cutículas. Faz manutenção quinzenal."
+    },
+    {
+      "nome": "Luciana Pereira",
+      "telefone": "11976543210",
+      "aniversario": "3001",
+      "observacoes": "Vem sempre com a filha adolescente. Gosta de tons rosados."
+    },
+    {
+      "nome": "Beatriz Santos",
+      "telefone": "11945678912",
+      "aniversario": "1206",
+      "observacoes": "Noiva em 2025. Testando diferentes estilos para o casamento."
+    },
+    {
+      "nome": "Roberta Souza",
+      "telefone": "11987123456",
+      "aniversario": "0502",
+      "observacoes": "Profissional da saúde, precisa de esmaltes discretos e duradouros."
+    },
+    {
+      "nome": "Mariana Costa",
+      "telefone": "11956789123",
+      "aniversario": "1808",
+      "observacoes": "Ama nail art temática. Sempre traz inspirações do Pinterest."
+    }
+  ],
+  "exportadoEm": "2025-08-03T12:00:00.000Z",
+  "versao": "1.0"
+}
